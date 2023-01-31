@@ -1,8 +1,17 @@
+/**
+ * App component
+ *
+ * Consists of routing components and components-providers.
+ */
+
 // Browser navigation
 import { Route, Routes } from 'react-router-dom';
 
 // Pages
 import { Home, SharedLayout } from 'pages';
+
+// Styles
+import { CssBaseline } from '@mui/material';
 
 // Misc
 import { routes } from 'utils';
@@ -19,6 +28,7 @@ function App() {
           <Route path={routes.mars} element={<div>Mars page</div>} />
         </Route>
       </Routes>
+      <CssBaseline />
     </>
   );
 }

@@ -13,10 +13,11 @@ import ReactDOM from 'react-dom/client';
 // **** Third-party providers **** //
 
 import { BrowserRouter } from 'react-router-dom';
+import { ThemeProvider } from '@mui/material';
 
 // **** Styling **** //
 
-import './index.css';
+import { theme } from 'utils';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -32,8 +33,10 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <BrowserRouter basename="/codnity-task">
-      <App />
-    </BrowserRouter>
+    <ThemeProvider theme={theme}>
+      <BrowserRouter basename="/codnity-task">
+        <App />
+      </BrowserRouter>
+    </ThemeProvider>
   </React.StrictMode>,
 );
