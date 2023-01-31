@@ -1,19 +1,28 @@
 /**
- * The starting point of the application.
+ * The starting point of the React.js application.
  *
- * Contains style resetting; font addition
+ * Contains style resetting, font addition
+ * third-party API providers etc.
  */
 
-// TODO: update description
+// **** React Core **** //
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+
+// **** Third-party providers **** //
+
+import { BrowserRouter } from 'react-router-dom';
+
+// **** Styling **** //
 
 import './index.css';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+
+// **** App **** //
 
 import App from './App';
 
@@ -23,6 +32,8 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter basename="/codnity-task">
+      <App />
+    </BrowserRouter>
   </React.StrictMode>,
 );
