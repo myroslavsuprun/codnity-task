@@ -1,6 +1,14 @@
+/**
+ * SharedLayout component.
+ *
+ * File contains basic application layout for all routes with header and footer parts.
+ */
+
+// Routing
 import { Outlet } from 'react-router-dom';
 
-import { Header } from 'modules';
+// Components
+import { Header, Footer } from 'modules';
 
 const SharedLayout = () => {
   return (
@@ -9,7 +17,7 @@ const SharedLayout = () => {
       <main>
         <Outlet />
       </main>
-      <div>Footer</div>
+      <Footer />
     </>
   );
 };

@@ -1,5 +1,5 @@
 /**
- * App component
+ * App component.
  *
  * Consists of routing components and components-providers.
  */
