@@ -38,7 +38,14 @@ const HeaderAppBar = ({ handleDrawerToggle }: HeaderAppBarProps) => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Typography
+            variant="h6"
+            gap={1}
+            alignItems="center"
+            display="flex"
+            component="div"
+            sx={{ flexGrow: 1 }}
+          >
             <RocketLaunchIcon /> Discover Space
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
