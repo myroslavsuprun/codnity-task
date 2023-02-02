@@ -2,13 +2,14 @@
 import { useTheme } from '@mui/material';
 
 // Components
+import { FooterBottomPart } from 'components';
 import { Box, Container, Divider, Grid, Link, Typography } from '@mui/material';
 
 // Icons
 import { RocketLaunch as RocketLaunchIcon } from '@mui/icons-material';
 
 // Misc
-import { socialLinks, techLinks } from 'components';
+import { techLinks } from 'components';
 
 // **** Component **** //
 
@@ -68,33 +69,7 @@ const Footer = () => {
           </Grid>
         </Grid>
         <Divider />
-        <Grid
-          container
-          direction="row"
-          justifyContent="center"
-          alignItems="center"
-          pt={1}
-        >
-          <Grid item xs={6}>
-            <Typography color="textSecondary" variant="subtitle2">
-              {`© ${new Date().getFullYear()} Discover Space. All rights reserved.`}
-            </Typography>
-          </Grid>
-          <Grid item container xs={6} spacing={2} justifyContent="flex-end">
-            {socialLinks.map(({ link, inner }) => (
-              <Grid item>
-                <Link
-                  href={link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  underline="none"
-                >
-                  {inner}
-                </Link>
-              </Grid>
-            ))}
-          </Grid>
-        </Grid>
+        <FooterBottomPart />
       </Container>
     </Box>
   );
