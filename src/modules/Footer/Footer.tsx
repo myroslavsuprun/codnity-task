@@ -1,3 +1,6 @@
+// Hooks
+import { useTheme } from '@mui/material';
+
 // Components
 import { Box, Container, Divider, Grid, Link, Typography } from '@mui/material';
 
@@ -10,6 +13,8 @@ import { socialLinks, techLinks } from 'components';
 // **** Component **** //
 
 const Footer = () => {
+  const theme = useTheme();
+
   return (
     <Box
       component={'footer'}
@@ -38,6 +43,13 @@ const Footer = () => {
             item
             container
             sm={7}
+            sx={{
+              [theme.breakpoints.down('sm')]: {
+                flexDirection: 'column',
+                alignItems: 'center',
+                paddingTop: '8px',
+              },
+            }}
             columnSpacing={2.5}
             justifyContent="flex-end"
           >
