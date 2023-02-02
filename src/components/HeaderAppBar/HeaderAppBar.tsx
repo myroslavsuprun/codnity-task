@@ -6,6 +6,7 @@ import {
   AppBar,
   Box,
   Button,
+  Container,
   IconButton,
   Toolbar,
   Typography,
@@ -26,27 +27,34 @@ import { HeaderAppBarProps } from './types';
 const HeaderAppBar = ({ handleDrawerToggle }: HeaderAppBarProps) => {
   return (
     <AppBar position="static" component="nav">
-      <Toolbar>
-        <IconButton
-          color="inherit"
-          aria-label="open drawer"
-          edge="start"
-          onClick={handleDrawerToggle}
-          sx={{ mr: 2, display: { sm: 'none' } }}
-        >
-          <MenuIcon />
-        </IconButton>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          <RocketLaunchIcon /> Discover Space
-        </Typography>
-        <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-          {linkList.map(({ to, text }) => (
-            <Button component={Link} to={to} key={text} sx={{ color: '#fff' }}>
-              {text}
-            </Button>
-          ))}
-        </Box>
-      </Toolbar>
+      <Container maxWidth="lg">
+        <Toolbar style={{ padding: 0 }}>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+            sx={{ mr: 2, display: { sm: 'none' } }}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            <RocketLaunchIcon /> Discover Space
+          </Typography>
+          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+            {linkList.map(({ to, text }) => (
+              <Button
+                component={Link}
+                to={to}
+                key={text}
+                sx={{ color: '#fff' }}
+              >
+                {text}
+              </Button>
+            ))}
+          </Box>
+        </Toolbar>
+      </Container>
     </AppBar>
   );
 };
