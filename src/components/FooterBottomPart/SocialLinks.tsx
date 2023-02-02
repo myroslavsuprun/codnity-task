@@ -10,7 +10,7 @@ const SocialLinks = () => {
   return (
     <Grid item container xs={6} spacing={2} justifyContent="flex-end">
       {socialLinks.map(({ link, inner }) => (
-        <Grid item>
+        <Grid key={link} item>
           <Link
             href={link}
             target="_blank"

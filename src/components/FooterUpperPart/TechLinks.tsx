@@ -35,7 +35,7 @@ const TechLinks = () => {
       justifyContent="flex-end"
     >
       {techLinks.map(({ link, text }) => (
-        <Grid item>
+        <Grid key={text} item>
           <Link
             href={link}
             target="_blank"
