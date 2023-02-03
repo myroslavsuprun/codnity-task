@@ -6,16 +6,7 @@ import { Box, Container, Divider } from '@mui/material';
 
 const Footer = () => {
   return (
-    <Box
-      component={'footer'}
-      sx={{
-        bottom: 0,
-        position: 'fixed',
-        width: '100%',
-        height: 'auto',
-      }}
-      py={2}
-    >
+    <Box component={'footer'} py={2}>
       <Container maxWidth="lg">
         <FooterUpperPart />
         <Divider />

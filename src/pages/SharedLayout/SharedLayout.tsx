@@ -8,18 +8,18 @@
 import { Outlet } from 'react-router-dom';
 
 // Components
-import { Container } from '@mui/material';
+import { Box, Container } from '@mui/material';
 import { Header, Footer } from 'modules';
 
 const SharedLayout = () => {
   return (
     <>
       <Header />
-      <main>
+      <Box component="main" minHeight="82vh">
         <Container maxWidth="lg">
           <Outlet />
         </Container>
-      </main>
+      </Box>
       <Footer />
     </>
   );

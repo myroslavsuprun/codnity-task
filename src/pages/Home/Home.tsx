@@ -1,10 +1,13 @@
+// Router
 import { Link as RouterLink } from 'react-router-dom';
 
 // Components
 import { Box, Grid, Typography, Link } from '@mui/material';
 
 // Images
-import { MarsDroneImage, NasaImage } from 'assets';
+import { EarthImage, MarsDroneImage, NasaImage } from 'assets';
+
+// Misc
 import { routes } from 'utils';
 
 // **** Component **** //
@@ -32,7 +35,7 @@ const Home = () => {
           <img loading="lazy" width="300" src={NasaImage} alt="Nasa" />
         </Grid>
       </Grid>
-      <Grid container justifyContent="flex-end" spacing={4} p={2}>
+      <Grid container justifyContent="flex-end" mb={3} spacing={4} p={2}>
         <Grid item display="flex" justifyContent="flex-end" xs={6}>
           <Box borderRadius={2} overflow="hidden">
             <img
@@ -58,20 +61,29 @@ const Home = () => {
           </Typography>
         </Grid>
       </Grid>
-      <Grid container>
-        <Grid item></Grid>
-        <Grid item display="flex" justifyContent="flex-end" xs={6}>
-          <Box borderRadius={2} overflow="hidden">
-            <img
-              style={{
-                display: 'block',
-              }}
-              loading="lazy"
-              width="400"
-              src={MarsDroneImage}
-              alt="Mars drone"
-            />
-          </Box>
+      <Grid container spacing={4} textAlign="end">
+        <Grid item xs={6}>
+          <Typography variant="h4" mb={1} component="h3">
+            Earth footages
+          </Typography>
+          <Typography variant="h5" component="p">
+            <Link to={routes.earth} underline="none" component={RouterLink}>
+              Take a look
+            </Link>{' '}
+            from the above. Access satellite Earth images by latitude and
+            longitude.
+          </Typography>
+        </Grid>
+        <Grid item xs={6}>
+          <img
+            style={{
+              display: 'block',
+            }}
+            loading="lazy"
+            width="300"
+            src={EarthImage}
+            alt="Mars drone"
+          />
         </Grid>
       </Grid>
     </>
