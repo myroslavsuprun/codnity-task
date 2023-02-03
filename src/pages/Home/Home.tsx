@@ -5,61 +5,24 @@ import { Link as RouterLink } from 'react-router-dom';
 import { useTheme } from '@mui/material';
 
 // Components
+import { AboutUs } from 'modules';
 import { Box, Grid, Typography, Link } from '@mui/material';
 
 // Images
-import { EarthImage, MarsDroneImage, NasaImage } from 'assets';
+import { EarthImage, MarsDroneImage } from 'assets';
 
 // Misc
 import { routes } from 'utils';
 
 // **** Component **** //
+// TODO: Add page description for file.
 
 const Home = () => {
   const theme = useTheme();
 
   return (
     <>
-      <Grid
-        container
-        alignItems="center"
-        mb={3}
-        p={2}
-        sx={{
-          [theme.breakpoints.down('sm')]: {
-            flexDirection: 'column',
-          },
-        }}
-      >
-        <Grid
-          item
-          sm={6}
-          sx={{
-            [theme.breakpoints.down('sm')]: {
-              textAlign: 'center',
-            },
-            [theme.breakpoints.up('sm')]: {
-              textAlign: 'end',
-            },
-          }}
-        >
-          <Typography variant="h4">Powered by</Typography>
-          <Typography variant="h3">NASA API</Typography>
-        </Grid>
-        <Grid item sm={6}>
-          <Box overflow="hidden">
-            <img
-              style={{
-                display: 'block',
-              }}
-              loading="lazy"
-              width="300"
-              src={NasaImage}
-              alt="Nasa"
-            />
-          </Box>
-        </Grid>
-      </Grid>
+      <AboutUs />
       <Grid
         container
         justifyContent="flex-end"
