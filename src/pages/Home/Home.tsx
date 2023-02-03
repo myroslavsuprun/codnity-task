@@ -1,6 +1,9 @@
 // Router
 import { Link as RouterLink } from 'react-router-dom';
 
+// Hooks
+import { useTheme } from '@mui/material';
+
 // Components
 import { Box, Grid, Typography, Link } from '@mui/material';
 
@@ -13,43 +16,100 @@ import { routes } from 'utils';
 // **** Component **** //
 
 const Home = () => {
+  const theme = useTheme();
+
   return (
     <>
-      <Grid container alignItems="center" mb={3} spacing={4} p={2}>
+      <Grid
+        container
+        alignItems="center"
+        mb={3}
+        p={2}
+        sx={{
+          [theme.breakpoints.down('sm')]: {
+            flexDirection: 'column',
+          },
+        }}
+      >
         <Grid
-          container
-          spacing={1}
-          justifyContent="flex-end"
-          alignItems="baseline"
           item
           sm={6}
+          sx={{
+            [theme.breakpoints.down('sm')]: {
+              textAlign: 'center',
+            },
+            [theme.breakpoints.up('sm')]: {
+              textAlign: 'end',
+            },
+          }}
         >
-          <Grid item>
-            <Typography variant="h4">Powered by</Typography>
-          </Grid>
-          <Grid item>
-            <Typography variant="h3">NASA API</Typography>
-          </Grid>
+          <Typography variant="h4">Powered by</Typography>
+          <Typography variant="h3">NASA API</Typography>
         </Grid>
         <Grid item sm={6}>
-          <img loading="lazy" width="300" src={NasaImage} alt="Nasa" />
-        </Grid>
-      </Grid>
-      <Grid container justifyContent="flex-end" mb={3} spacing={4} p={2}>
-        <Grid item display="flex" justifyContent="flex-end" xs={6}>
-          <Box borderRadius={2} overflow="hidden">
+          <Box overflow="hidden">
             <img
               style={{
                 display: 'block',
               }}
               loading="lazy"
-              width="400"
+              width="300"
+              src={NasaImage}
+              alt="Nasa"
+            />
+          </Box>
+        </Grid>
+      </Grid>
+      <Grid
+        container
+        justifyContent="flex-end"
+        mb={3}
+        spacing={{
+          xs: 1,
+          sm: 4,
+        }}
+        p={2}
+        sx={{
+          [theme.breakpoints.down('sm')]: {
+            flexDirection: 'column',
+          },
+        }}
+      >
+        <Grid item display="flex" justifyContent="flex-end" sm={6}>
+          <Box
+            borderRadius={2}
+            overflow="hidden"
+            sx={{
+              [theme.breakpoints.down('sm')]: {
+                width: '280px',
+                ml: 'auto',
+                mr: 'auto',
+              },
+              [theme.breakpoints.up('sm')]: {
+                width: '400px',
+              },
+            }}
+          >
+            <img
+              style={{
+                display: 'block',
+                width: 'inherit',
+              }}
+              loading="lazy"
               src={MarsDroneImage}
               alt="Mars drone"
             />
           </Box>
         </Grid>
-        <Grid item xs={6}>
+        <Grid
+          item
+          sx={{
+            [theme.breakpoints.down('sm')]: {
+              textAlign: 'center',
+            },
+          }}
+          sm={6}
+        >
           <Typography mb={1} variant="h4" component="h3">
             Mars Rover Photos
           </Typography>
@@ -61,8 +121,28 @@ const Home = () => {
           </Typography>
         </Grid>
       </Grid>
-      <Grid container spacing={4} textAlign="end">
-        <Grid item xs={6}>
+      <Grid
+        container
+        spacing={{
+          sm: 4,
+        }}
+        textAlign="end"
+        sx={{
+          [theme.breakpoints.down('sm')]: {
+            flexDirection: 'column-reverse',
+          },
+        }}
+        mb={5}
+      >
+        <Grid
+          item
+          sm={6}
+          sx={{
+            [theme.breakpoints.down('sm')]: {
+              textAlign: 'center',
+            },
+          }}
+        >
           <Typography variant="h4" mb={1} component="h3">
             Earth footages
           </Typography>
@@ -74,16 +154,30 @@ const Home = () => {
             longitude.
           </Typography>
         </Grid>
-        <Grid item xs={6}>
-          <img
-            style={{
-              display: 'block',
+        <Grid item sm={6}>
+          <Box
+            overflow="hidden"
+            sx={{
+              [theme.breakpoints.down('sm')]: {
+                width: '300px',
+                ml: 'auto',
+                mr: 'auto',
+              },
+              [theme.breakpoints.up('sm')]: {
+                width: '220px',
+              },
             }}
-            loading="lazy"
-            width="300"
-            src={EarthImage}
-            alt="Mars drone"
-          />
+          >
+            <img
+              style={{
+                display: 'block',
+                width: 'inherit',
+              }}
+              loading="lazy"
+              src={EarthImage}
+              alt="Mars drone"
+            />
+          </Box>
         </Grid>
       </Grid>
     </>
