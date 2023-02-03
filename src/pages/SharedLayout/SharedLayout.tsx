@@ -15,7 +15,7 @@ const SharedLayout = () => {
   return (
     <>
       <Header />
-      <Box component="main" minHeight="82vh">
+      <Box component="main" mb={5} mt={1} minHeight="82vh">
         <Container maxWidth="lg">
           <Outlet />
         </Container>

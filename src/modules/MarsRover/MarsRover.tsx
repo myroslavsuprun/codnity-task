@@ -73,7 +73,7 @@ const MarsRover = () => {
           <Link to={routes.mars} underline="none" component={RouterLink}>
             Discover
           </Link>{' '}
-          mars photos provided by NASA.
+          Mars photos provided by NASA.
         </Typography>
       </Grid>
     </Grid>

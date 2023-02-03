@@ -51,7 +51,6 @@ const EarthFootages = () => {
       }}
       textAlign="end"
       sx={containerStyle}
-      mb={5}
     >
       <Grid item sm={6} sx={typographyStyle}>
         <Typography variant="h4" mb={1} component="h3">
