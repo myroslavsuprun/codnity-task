@@ -8,7 +8,7 @@
 import { Route, Routes } from 'react-router-dom';
 
 // Pages
-import { Home, SharedLayout } from 'pages';
+import { Home, Mars, SharedLayout } from 'pages';
 
 // Styles
 import { CssBaseline } from '@mui/material';
@@ -25,7 +25,7 @@ function App() {
         <Route path={routes.home} element={<SharedLayout />}>
           <Route index element={<Home />} />
           <Route path={routes.earth} element={<div>Earth page</div>} />
-          <Route path={routes.mars} element={<div>Mars page</div>} />
+          <Route path={routes.mars} element={<Mars />} />
         </Route>
       </Routes>
       <CssBaseline />
