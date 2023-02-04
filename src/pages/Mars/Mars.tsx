@@ -40,34 +40,34 @@ const Mars = () => {
 
   return (
     <>
-      <Grid
-        container
-        sx={{
-          [theme.breakpoints.down('md')]: {
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-          },
-        }}
-      >
-        <MarsFilter
-          roverValue={roverValue}
-          setRoverValue={setRoverValue}
-          solValue={solValue}
-          setSolValue={setSolValue}
-        />
+      <Provider store={marsImagesStore}>
         <Grid
-          md={9}
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          item
+          container
+          sx={{
+            [theme.breakpoints.down('md')]: {
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+            },
+          }}
         >
-          <Provider store={marsImagesStore}>
+          <MarsFilter
+            roverValue={roverValue}
+            setRoverValue={setRoverValue}
+            solValue={solValue}
+            setSolValue={setSolValue}
+          />
+          <Grid
+            md={9}
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            item
+          >
             <MarsImagesList sol={String(solValue)} camera={roverValue} />
-          </Provider>
+          </Grid>
         </Grid>
-      </Grid>
+      </Provider>
     </>
   );
 };
