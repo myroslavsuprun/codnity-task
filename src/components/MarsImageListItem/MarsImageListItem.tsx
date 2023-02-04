@@ -11,8 +11,8 @@ const MarsImageListItem = ({ images }: MarsImageListItemProps) => {
   return (
     <>
       {images.map(({ img_src, id, rover: { name } }) => (
-        <LazyLoadComponent>
-          <ImageListItem key={id}>
+        <LazyLoadComponent key={id}>
+          <ImageListItem>
             <img src={img_src} alt={`${id}-${name}`} loading="lazy" />
           </ImageListItem>
         </LazyLoadComponent>

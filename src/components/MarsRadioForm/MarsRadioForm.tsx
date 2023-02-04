@@ -1,6 +1,6 @@
 // Hooks
+import { useSearchParams } from 'react-router-dom';
 import { useState } from 'react';
-import { Popover } from '@mui/material';
 
 // Components
 import {
@@ -10,6 +10,7 @@ import {
   Radio,
   RadioGroup,
   Typography,
+  Popover,
 } from '@mui/material';
 
 // Misc
@@ -22,10 +23,13 @@ import { MarsRadioFormProps } from './types';
 // **** Component **** //
 
 const MarsRadioForm = ({ roverValue, setRoverValue }: MarsRadioFormProps) => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setRoverValue(event.target.value);
+    const value = event.target.value;
+    setRoverValue(value);
+    setSearchParams({ camera: value, sol: String(searchParams.get('sol')) });
   };
 
   const handlePopoverOpen = (event: MouseEvent<HTMLElement>) => {

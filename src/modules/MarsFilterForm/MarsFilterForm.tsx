@@ -16,6 +16,7 @@ const MarsFilter = ({
 }: MarsFilterProps) => {
   const theme = useTheme();
 
+  // TODO: Add request on Search click and on componentWillMount
   return (
     <Grid md={3} item>
       <Box display="flex" flexDirection="column">

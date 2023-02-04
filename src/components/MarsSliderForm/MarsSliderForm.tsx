@@ -1,4 +1,5 @@
 // Hooks
+import { useSearchParams } from 'react-router-dom';
 import { useState } from 'react';
 
 // Components
@@ -9,12 +10,18 @@ import { ChangeEvent, MouseEvent } from 'react';
 import { MarsSliderFormProps } from './types';
 
 const MarsSliderForm = ({ solValue, setSolValue }: MarsSliderFormProps) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const handleSliderChange = (_: Event, newValue: number | number[]) => {
     setSolValue(newValue);
+    updateSeacrhParams(newValue);
   };
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSolValue(Number(event.target.value));
+    const value = Number(event.target.value);
+
+    setSolValue(value);
+    updateSeacrhParams(value);
   };
 
   const handleBlur = () => {
@@ -24,10 +31,19 @@ const MarsSliderForm = ({ solValue, setSolValue }: MarsSliderFormProps) => {
 
     if (solValue < 0) {
       setSolValue(0);
-    } else if (solValue > 1000) {
-      setSolValue(1000);
+      updateSeacrhParams(0);
+    } else if (solValue > 3400) {
+      setSolValue(3400);
+      updateSeacrhParams(3400);
     }
   };
+
+  function updateSeacrhParams(newSolValue: number | number[]) {
+    setSearchParams({
+      camera: String(searchParams.get('camera')),
+      sol: String(newSolValue),
+    });
+  }
 
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
