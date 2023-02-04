@@ -24,8 +24,6 @@ import { MarsRadioFormProps } from './types';
 const MarsRadioForm = ({ roverValue, setRoverValue }: MarsRadioFormProps) => {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
-  const open = Boolean(anchorEl);
-
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setRoverValue(event.target.value);
   };
@@ -38,11 +36,13 @@ const MarsRadioForm = ({ roverValue, setRoverValue }: MarsRadioFormProps) => {
     setAnchorEl(null);
   };
 
+  const openPopover = Boolean(anchorEl);
+
   return (
     <FormControl>
       <FormLabel id="demo-radio-buttons-group-label">
         <Typography
-          aria-owns={open ? 'mouse-over-popover' : undefined}
+          aria-owns={openPopover ? 'mouse-over-popover' : undefined}
           aria-haspopup="true"
           onMouseEnter={handlePopoverOpen}
           onMouseLeave={handlePopoverClose}
@@ -54,7 +54,7 @@ const MarsRadioForm = ({ roverValue, setRoverValue }: MarsRadioFormProps) => {
           sx={{
             pointerEvents: 'none',
           }}
-          open={open}
+          open={openPopover}
           anchorEl={anchorEl}
           anchorOrigin={{
             vertical: 'bottom',
