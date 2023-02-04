@@ -43,8 +43,10 @@ const Mars = () => {
       <Grid
         container
         sx={{
-          [theme.breakpoints.down('sm')]: {
+          [theme.breakpoints.down('md')]: {
             flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
           },
         }}
       >
@@ -56,9 +58,9 @@ const Mars = () => {
         />
         <Grid
           md={9}
-          justifyContent="center"
-          alignItems="center"
           display="flex"
+          alignItems="center"
+          justifyContent="center"
           item
         >
           <Provider store={marsImagesStore}>

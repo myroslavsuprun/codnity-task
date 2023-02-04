@@ -4,13 +4,12 @@ import { useGetMarsImagesQuery } from './api';
 
 // Components
 import { MarsImageListItem } from 'components';
-import { ImageList, Box, Typography } from '@mui/material';
+import { ImageList, Box, Typography, CircularProgress } from '@mui/material';
 
 // Types
 import { MarsImagesListProps } from './types';
 
 // **** Component **** //
-// TODO: Add spinners or skeletons
 const MarsImagesList = ({ camera, sol }: MarsImagesListProps) => {
   // Hooks
   const theme = useTheme();
@@ -36,7 +35,11 @@ const MarsImagesList = ({ camera, sol }: MarsImagesListProps) => {
    * UI return in case of loading.
    */
   if (isLoading) {
-    return <></>;
+    return (
+      <Box>
+        <CircularProgress size={60} />
+      </Box>
+    );
   }
 
   /**
@@ -47,7 +50,7 @@ const MarsImagesList = ({ camera, sol }: MarsImagesListProps) => {
 
     if (photos.length === 0) {
       return (
-        <Box display="flex" alignItems="center" justifyContent="center">
+        <Box>
           <Typography variant="h5">No images found</Typography>
         </Box>
       );
@@ -64,7 +67,13 @@ const MarsImagesList = ({ camera, sol }: MarsImagesListProps) => {
    * UI return in case of error.
    */
   if (isError) {
-    return <></>;
+    return (
+      <Box>
+        <Typography variant="h5" color="error">
+          An error has occured. Sorry!
+        </Typography>
+      </Box>
+    );
   }
 
   return <></>;

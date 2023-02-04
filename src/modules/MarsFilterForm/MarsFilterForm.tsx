@@ -18,7 +18,7 @@ const MarsFilter = ({
 
   // TODO: Add request on Search click and on componentWillMount
   return (
-    <Grid md={3} item>
+    <Grid md={3} mb={3} item>
       <Box display="flex" flexDirection="column">
         <MarsRadioForm roverValue={roverValue} setRoverValue={setRoverValue} />
         <MarsSliderForm solValue={solValue} setSolValue={setSolValue} />
