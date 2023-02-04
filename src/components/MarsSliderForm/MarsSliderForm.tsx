@@ -81,8 +81,8 @@ const MarsSliderForm = ({ solValue, setSolValue }: MarsSliderFormProps) => {
             aria-label="sol slider"
             valueLabelDisplay="auto"
             min={0}
-            max={1000}
-            step={10}
+            max={3400}
+            step={100}
             value={typeof solValue === 'number' ? solValue : 0}
             onChange={handleSliderChange}
           />
@@ -94,9 +94,9 @@ const MarsSliderForm = ({ solValue, setSolValue }: MarsSliderFormProps) => {
             onChange={handleInputChange}
             onBlur={handleBlur}
             inputProps={{
-              step: 10,
+              step: 100,
               min: 0,
-              max: 1000,
+              max: 3400,
               type: 'number',
               'aria-labelledby': 'sol-slider',
             }}
