@@ -1,3 +1,6 @@
+// Hooks
+import { useTheme } from '@mui/material';
+
 // Components
 import { MarsRadioForm, MarsSliderForm } from 'components';
 import { Button, Grid, Box } from '@mui/material';
@@ -11,12 +14,21 @@ const MarsFilter = ({
   setRoverValue,
   setSolValue,
 }: MarsFilterProps) => {
+  const theme = useTheme();
+
   return (
     <Grid md={3} item>
       <Box display="flex" flexDirection="column">
         <MarsRadioForm roverValue={roverValue} setRoverValue={setRoverValue} />
         <MarsSliderForm solValue={solValue} setSolValue={setSolValue} />
-        <Box>
+        <Box
+          sx={{
+            [theme.breakpoints.down('sm')]: {
+              display: 'flex',
+              justifyContent: 'center',
+            },
+          }}
+        >
           <Button variant="contained">Search</Button>
         </Box>
       </Box>
