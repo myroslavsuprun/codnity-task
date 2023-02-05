@@ -14,7 +14,7 @@ import { MarsImagesListProps } from './types';
 const MarsImagesList = ({ camera, sol }: MarsImagesListProps) => {
   // Hooks
   const theme = useTheme();
-  const { data, isLoading, isSuccess, isError } = useGetMarsImagesQuery({
+  const { data, isSuccess, isError, isFetching } = useGetMarsImagesQuery({
     camera,
     sol,
   });
@@ -35,7 +35,7 @@ const MarsImagesList = ({ camera, sol }: MarsImagesListProps) => {
   /**
    * UI return in case of loading.
    */
-  if (isLoading) {
+  if (isFetching) {
     return (
       <Box>
         <CircularProgress size={60} />
