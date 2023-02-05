@@ -20,6 +20,7 @@ import { routes } from 'utils';
 // Lazy loading
 const Home = lazy(() => import('pages/Home/Home'));
 const Mars = lazy(() => import('pages/Mars/Mars'));
+const Earth = lazy(() => import('pages/Earth/Earth'));
 
 // **** Component **** //
 
@@ -29,7 +30,7 @@ function App() {
       <Routes>
         <Route path={routes.home} element={<SharedLayout />}>
           <Route index element={<Home />} />
-          <Route path={routes.earth} element={<div>Earth page</div>} />
+          <Route path={routes.earth} element={<Earth />} />
           <Route path={routes.mars} element={<Mars />} />
         </Route>
       </Routes>
