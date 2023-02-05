@@ -38,19 +38,19 @@ const Mars = () => {
     }
   }, [roverValue, searchParams, setSolValue, solValue, setSearchParams]);
 
+  // Styles
+  const containerStyle = {
+    [theme.breakpoints.down('md')]: {
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+  };
+
   return (
     <>
       <Provider store={marsImagesStore}>
-        <Grid
-          container
-          sx={{
-            [theme.breakpoints.down('md')]: {
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-            },
-          }}
-        >
+        <Grid container sx={containerStyle}>
           <MarsFilter
             roverValue={roverValue}
             setRoverValue={setRoverValue}
