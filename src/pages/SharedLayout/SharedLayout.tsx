@@ -19,7 +19,7 @@ const SharedLayout = () => {
   return (
     <>
       <Header />
-      <Box component="main" mb={5} mt={1} minHeight="82vh">
+      <Box component="main" mb={5} mt={2} minHeight="82vh">
         <Suspense fallback={<Loader />}>
           <Container maxWidth="lg">
             <Outlet />

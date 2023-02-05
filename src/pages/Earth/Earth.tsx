@@ -24,47 +24,90 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs from 'dayjs';
 
 // Types
-import { FormEvent } from 'react';
+import { FormEvent, ChangeEvent } from 'react';
 import { Dayjs } from 'dayjs';
 
-// TODO: Extract types somewhere =)
-interface FormElements extends HTMLFormControlsCollection {
-  longtitude: HTMLInputElement;
-  latitude: HTMLInputElement;
-}
+// **** Declarations **** //
 
-interface FormTarget extends HTMLFormElement {
-  elements: FormElements;
-}
+const defaultDate = dayjs('2020-08-10');
 
 // **** Component **** //
 
 const Earth = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const searchParamsDate = dayjs(searchParams.get('date'));
-  const [dateValue, setDateValue] = useState<Dayjs>(
-    searchParamsDate ?? dayjs('2020-08-10'),
-  );
 
+  // ** Search parameters default values
+  const searchParamsDate = searchParams.get('date')
+    ? dayjs(searchParams.get('date'))
+    : null;
+  const searchParamsLat = searchParams.get('lat');
+  const searchParamsLon = searchParams.get('lon');
+
+  // ** State values
+  const [dateValue, setDateValue] = useState<Dayjs>(
+    searchParamsDate ?? defaultDate,
+  );
+  const [latValue, setLatValue] = useState(searchParamsLat ?? '');
+  const [lonValue, setLonValue] = useState(searchParamsLon ?? '');
+
+  // ** Input handlers
   const handleDateChange = (newValue: Dayjs | null) => {
-    if (newValue) {
-      setDateValue(newValue);
-    }
+    if (!newValue) return;
+
+    setDateValue(newValue);
+    updateSearchParams({ date: newValue });
+  };
+
+  const handleLatChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+
+    setLatValue(value);
+    updateSearchParams({ lat: value });
+  };
+
+  const handleLonChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+
+    setLonValue(value);
+    updateSearchParams({ lon: value });
+  };
+
+  // ** Button & Form handlers
+  const handleMyLocationClick = () => {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      const { latitude, longitude } = position.coords;
+      // String typization
+      const lat = String(latitude);
+      const lon = String(longitude);
+
+      setLatValue(lat);
+      setLonValue(lon);
+      updateSearchParams({ lon, lat });
+    });
   };
 
   const handleFormSubmit = (e: FormEvent) => {
     e.preventDefault();
-
-    const target = e.target as FormTarget;
-    const { latitude, longtitude } = target.elements;
-
-    // Setting route query
-    setSearchParams({
-      lon: longtitude.value,
-      lat: latitude.value,
-      date: dateValue.format('YYYY-MM-DD'),
-    });
   };
+
+  // ** Uitlity
+  function updateSearchParams({
+    lon = lonValue,
+    lat = latValue,
+    date = dateValue,
+  }) {
+    let formattedDate = defaultDate.format('YYYY-MM-DD');
+
+    if (date.isValid()) {
+      formattedDate = date.format('YYYY-MM-DD');
+    }
+
+    setSearchParams({
+      lon,
+      lat,
+      date: formattedDate,
+    });
+  }
 
   return (
     <>
@@ -78,7 +121,8 @@ const Earth = () => {
           <FormControl>
             <InputLabel htmlFor="latitude">Latitude</InputLabel>
             <OutlinedInput
-              defaultValue={searchParams.get('lat') ?? ''}
+              value={latValue}
+              onChange={handleLatChange}
               type="number"
               required
               id="latitude"
@@ -90,13 +134,24 @@ const Earth = () => {
           <FormControl>
             <InputLabel htmlFor="longtitude">Longitude</InputLabel>
             <OutlinedInput
-              defaultValue={searchParams.get('lon') ?? ''}
+              value={lonValue}
+              onChange={handleLonChange}
               type="number"
               required
-              id="longtitude"
+              id="longitude"
               label="Longitude"
             />
           </FormControl>
+        </Box>
+        <Box>
+          <Button
+            type="button"
+            onClick={handleMyLocationClick}
+            variant="contained"
+            size="small"
+          >
+            Use my current location
+          </Button>
         </Box>
         <Box>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
