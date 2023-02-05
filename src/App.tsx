@@ -9,16 +9,17 @@ import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 // Pages
-import { Home, Mars, SharedLayout } from 'pages';
-const Home = lazy(() => import('pages/Home'));
-const Mars = lazy(() => import('pages/Home'));
-const Home = lazy(() => import('pages/Home'));
+import { SharedLayout } from 'pages';
 
 // Styles
 import { CssBaseline } from '@mui/material';
 
 // Misc
 import { routes } from 'utils';
+
+// Lazy loading
+const Home = lazy(() => import('pages/Home/Home'));
+const Mars = lazy(() => import('pages/Mars/Mars'));
 
 // **** Component **** //
 
