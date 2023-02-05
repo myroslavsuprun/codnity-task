@@ -3,12 +3,16 @@
  *
  * Consists of routing components and components-providers.
  */
+import { lazy } from 'react';
 
 // Browser navigation
 import { Route, Routes } from 'react-router-dom';
 
 // Pages
 import { Home, Mars, SharedLayout } from 'pages';
+const Home = lazy(() => import('pages/Home'));
+const Mars = lazy(() => import('pages/Home'));
+const Home = lazy(() => import('pages/Home'));
 
 // Styles
 import { CssBaseline } from '@mui/material';

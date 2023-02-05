@@ -10,6 +10,7 @@ import { ImageList, Box, Typography, CircularProgress } from '@mui/material';
 import { MarsImagesListProps } from './types';
 
 // **** Component **** //
+
 const MarsImagesList = ({ camera, sol }: MarsImagesListProps) => {
   // Hooks
   const theme = useTheme();
