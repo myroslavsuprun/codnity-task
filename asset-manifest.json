@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/codnity-task/static/css/main.872af8cf.css",
-    "main.js": "/codnity-task/static/js/main.15545488.js",
+    "main.js": "/codnity-task/static/js/main.8c423390.js",
     "static/media/mars-drone.jpg": "/codnity-task/static/media/mars-drone.0c4b336df8733e711c7e.jpg",
     "static/media/earth.png": "/codnity-task/static/media/earth.e01b382dd488b4889c33.png",
     "static/media/roboto-all-500-normal.woff": "/codnity-task/static/media/roboto-all-500-normal.0ab669b7a0d19b178f57.woff",
@@ -38,10 +38,10 @@
     "static/media/roboto-greek-ext-700-normal.woff2": "/codnity-task/static/media/roboto-greek-ext-700-normal.bd9854c751441ccc1a70.woff2",
     "index.html": "/codnity-task/index.html",
     "main.872af8cf.css.map": "/codnity-task/static/css/main.872af8cf.css.map",
-    "main.15545488.js.map": "/codnity-task/static/js/main.15545488.js.map"
+    "main.8c423390.js.map": "/codnity-task/static/js/main.8c423390.js.map"
   },
   "entrypoints": [
     "static/css/main.872af8cf.css",
-    "static/js/main.15545488.js"
+    "static/js/main.8c423390.js"
   ]
 }
