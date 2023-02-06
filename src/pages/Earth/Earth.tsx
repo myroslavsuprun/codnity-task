@@ -3,19 +3,23 @@
  *
  * The file contains Earth page routing UI with fetching data and location usage.
  */
+// Providers
+import { Provider } from 'react-redux';
+
 // Hooks
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 // Components
-// ---
+import { EarthFilterForm, EarthFootage } from 'modules';
+import { Grid } from '@mui/material';
 
 // Util
 import dayjs from 'dayjs';
 
 // Types
 import { Dayjs } from 'dayjs';
-import { EarthFilterForm } from 'modules';
+import { earthLandsatStore } from 'modules/EarthFootage/store';
 
 // **** Declarations **** //
 
@@ -42,14 +46,31 @@ const Earth = () => {
 
   return (
     <>
-      <EarthFilterForm
-        dateValue={dateValue}
-        latValue={latValue}
-        lonValue={lonValue}
-        setDateValue={setDateValue}
-        setLatValue={setLatValue}
-        setLonValue={setLonValue}
-      />
+      <Provider store={earthLandsatStore}>
+        <Grid container>
+          <Grid item mb={2}>
+            <EarthFilterForm
+              dateValue={dateValue}
+              latValue={latValue}
+              lonValue={lonValue}
+              setDateValue={setDateValue}
+              setLatValue={setLatValue}
+              setLonValue={setLonValue}
+            />
+          </Grid>
+          <Grid
+            item
+            xs
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <EarthFootage date={dateValue} lat={latValue} lon={lonValue} />
+          </Grid>
+        </Grid>
+      </Provider>
     </>
   );
 };

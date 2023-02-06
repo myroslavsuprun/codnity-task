@@ -10,13 +10,14 @@ import { GetMarsImagesQueryParams } from './types';
 // **** Variables **** //
 
 const { NASA_API_KEY } = envVariables;
+const baseUrl = 'https://api.nasa.gov/mars-photos/api/v1/rovers/';
 
 // **** API **** //
 
 const marsRoverApi = createApi({
-  reducerPath: 'contactsApi',
+  reducerPath: 'marsRoverApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://api.nasa.gov/mars-photos/api/v1/rovers/',
+    baseUrl,
   }),
   endpoints: (builder) => ({
     getMarsImages: builder.query({

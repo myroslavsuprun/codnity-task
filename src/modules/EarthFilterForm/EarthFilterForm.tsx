@@ -1,5 +1,6 @@
 // Hooks
 import { useSearchParams } from 'react-router-dom';
+import { useGetEarthLandstatQuerySubscription } from 'modules';
 
 // Components
 import {
@@ -7,6 +8,7 @@ import {
   Button,
   FormControl,
   InputLabel,
+  Link,
   OutlinedInput,
   Stack,
   TextField,
@@ -20,15 +22,11 @@ import { defaultDate } from 'pages/Earth/Earth';
 // Types
 import { FormEvent, ChangeEvent } from 'react';
 import { Dayjs } from 'dayjs';
+import { EarthFilterFormProps } from './types';
 
-interface EarthFilterFormProps {
-  dateValue: Dayjs;
-  setDateValue: (prop: Dayjs) => void;
-  latValue: string;
-  setLatValue: (prop: string) => void;
-  lonValue: string;
-  setLonValue: (prop: string) => void;
-}
+// **** Variables **** //
+
+const coordinatesLink = 'https://www.latlong.net/';
 
 // **** Component **** //
 
@@ -42,6 +40,7 @@ const EarthFilterForm = ({
 }: EarthFilterFormProps) => {
   // ** Hooks
   const [, setSearchParams] = useSearchParams();
+  const [trigger] = useGetEarthLandstatQuerySubscription();
 
   // ** Input handlers
   const handleDateChange = (newValue: Dayjs | null) => {
@@ -81,6 +80,12 @@ const EarthFilterForm = ({
 
   const handleFormSubmit = (e: FormEvent) => {
     e.preventDefault();
+
+    trigger({
+      date: dateValue.format('YYYY-MM-DD'),
+      lat: latValue,
+      lon: lonValue,
+    });
   };
 
   // ** Uitlity
@@ -111,9 +116,9 @@ const EarthFilterForm = ({
           <OutlinedInput
             value={latValue}
             onChange={handleLatChange}
+            id="latitude"
             type="number"
             required
-            id="latitude"
             label="Latitude"
           />
         </FormControl>
@@ -132,14 +137,21 @@ const EarthFilterForm = ({
         </FormControl>
       </Box>
       <Box>
-        <Button
-          type="button"
-          onClick={handleMyLocationClick}
-          variant="contained"
-          size="small"
-        >
+        <Button onClick={handleMyLocationClick} type="button" size="small">
           Use my current location
         </Button>
+      </Box>
+      <Box>
+        <Link
+          component={Button}
+          size="small"
+          underline="none"
+          href={coordinatesLink}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Search for specific coordinates
+        </Link>
       </Box>
       <Box>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
