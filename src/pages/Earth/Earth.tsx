@@ -31,6 +31,7 @@ const defaultLon = '24.105186';
 // **** Component **** //
 
 const Earth = () => {
+  // ** Hooks
   const theme = useTheme();
   const [searchParams] = useSearchParams();
 
@@ -48,6 +49,16 @@ const Earth = () => {
   const [latValue, setLatValue] = useState(searchParamsLat ?? defaultLat);
   const [lonValue, setLonValue] = useState(searchParamsLon ?? defaultLon);
 
+  // ** Styles
+  const earthFootageWrapperStyle = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    [theme.breakpoints.down('sm')]: {
+      minWidth: 200,
+    },
+  };
+
   return (
     <>
       <Provider store={earthLandsatStore}>
@@ -62,18 +73,7 @@ const Earth = () => {
               setLonValue={setLonValue}
             />
           </Grid>
-          <Grid
-            item
-            xs
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              [theme.breakpoints.down('sm')]: {
-                minWidth: 200,
-              },
-            }}
-          >
+          <Grid item xs sx={earthFootageWrapperStyle}>
             <EarthFootage date={dateValue} lat={latValue} lon={lonValue} />
           </Grid>
         </Grid>
