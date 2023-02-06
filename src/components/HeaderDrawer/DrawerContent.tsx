@@ -24,7 +24,6 @@ const DrawerContent = ({ handleDrawerToggle }: DrawerContentProps) => {
   return (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        {/* //TODO: Extract name to another variable */}
         Discover Space
       </Typography>
       <Divider />

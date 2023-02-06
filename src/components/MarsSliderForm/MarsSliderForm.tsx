@@ -56,7 +56,6 @@ const MarsSliderForm = ({ solValue, setSolValue }: MarsSliderFormProps) => {
   };
 
   const openPopover = Boolean(anchorEl);
-  // TODO: Extract popover into single reusable component.
 
   return (
     <>

@@ -107,7 +107,6 @@ const EarthFilterForm = ({
     });
   }
 
-  // TODO: Split this module into several components.
   return (
     <Stack component="form" noValidate spacing={1} onSubmit={handleFormSubmit}>
       <Box>
