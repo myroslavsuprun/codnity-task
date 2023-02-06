@@ -1,5 +1,6 @@
 {
-  "name": "my-app",
+  "name": "codnity-task",
+  "homepage": "https://myroslavsuprun.github.io/codnity-task/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
