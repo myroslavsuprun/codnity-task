@@ -1,5 +1,5 @@
 const envVariables = {
-  NASA_API_KEY: process.env.REACT_APP_NASA_API_KEY ?? '',
+  NASA_API_KEY: 'hSWaz3BSg25N1BYFEu0aM8IcaMUiDbLLGEQqB64f',
 };
 
 export { envVariables };
