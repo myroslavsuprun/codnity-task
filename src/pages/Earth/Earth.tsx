@@ -9,6 +9,7 @@ import { Provider } from 'react-redux';
 // Hooks
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { useTheme } from '@mui/material';
 
 // Components
 import { EarthFilterForm, EarthFootage } from 'modules';
@@ -24,10 +25,13 @@ import { earthLandsatStore } from 'modules/EarthFootage/store';
 // **** Declarations **** //
 
 const defaultDate = dayjs('2020-08-10');
+const defaultLat = '56.949650';
+const defaultLon = '24.105186';
 
 // **** Component **** //
 
 const Earth = () => {
+  const theme = useTheme();
   const [searchParams] = useSearchParams();
 
   // ** Search parameters default values
@@ -41,8 +45,8 @@ const Earth = () => {
   const [dateValue, setDateValue] = useState<Dayjs>(
     searchParamsDate ?? defaultDate,
   );
-  const [latValue, setLatValue] = useState(searchParamsLat ?? '');
-  const [lonValue, setLonValue] = useState(searchParamsLon ?? '');
+  const [latValue, setLatValue] = useState(searchParamsLat ?? defaultLat);
+  const [lonValue, setLonValue] = useState(searchParamsLon ?? defaultLon);
 
   return (
     <>
@@ -65,6 +69,9 @@ const Earth = () => {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
+              [theme.breakpoints.down('sm')]: {
+                minWidth: 200,
+              },
             }}
           >
             <EarthFootage date={dateValue} lat={latValue} lon={lonValue} />
@@ -79,4 +86,4 @@ const Earth = () => {
 
 export default Earth;
 
-export { defaultDate };
+export { defaultDate, defaultLat, defaultLon };
