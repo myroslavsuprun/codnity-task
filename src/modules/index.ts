@@ -5,3 +5,4 @@ export * from './MarsRover';
 export * from './EarthFootages';
 export * from './MarsFilterForm';
 export * from './MarsImagesList';
+export * from './EarthFilterForm';
