@@ -20,7 +20,7 @@ import dayjs from 'dayjs';
 
 // Types
 import { Dayjs } from 'dayjs';
-import { earthLandsatStore } from 'modules/EarthFootage/store';
+import { earthLandsatStore } from 'modules';
 
 // **** Declarations **** //
 
