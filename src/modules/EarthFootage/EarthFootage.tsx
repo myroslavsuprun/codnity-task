@@ -1,9 +1,10 @@
 // Hooks
 import { useGetEarthLandsatQueryState } from './api';
 import { useTheme } from '@mui/material';
+import { useEffect, useState } from 'react';
 
 // Components
-import { Box, CircularProgress, Typography } from '@mui/material';
+import { Box, CircularProgress, Typography, Skeleton } from '@mui/material';
 
 // Types
 import { EarthFootageProps, GetEarthLandstatError } from './types';
@@ -19,6 +20,9 @@ const EarthFootage = ({ date, lat, lon }: EarthFootageProps) => {
     ? date.format('YYYY-MM-DD')
     : defaultDate.format('YYYY-MM-DD');
 
+  // ** State
+  const [imageLoaded, setImageLoaded] = useState<boolean>(false);
+
   // ** Hooks
   const theme = useTheme();
   const { data, isFetching, isUninitialized, isError, isSuccess, error } =
@@ -27,6 +31,30 @@ const EarthFootage = ({ date, lat, lon }: EarthFootageProps) => {
       lat,
       lon,
     });
+
+  // ** Lifecycle
+  useEffect(() => {
+    setImageLoaded(false);
+  }, [data]);
+
+  // ** Handlers
+  const handleImageLoad = () => {
+    setImageLoaded(true);
+  };
+
+  // ** Styles
+  const imgStyle = {
+    [theme.breakpoints.down('sm')]: {
+      width: 300,
+    },
+    [theme.breakpoints.between('sm', 'md')]: {
+      width: 400,
+    },
+    [theme.breakpoints.up('md')]: {
+      width: 800,
+    },
+    borderRadius: 2,
+  };
 
   // ** UI return
   if (isUninitialized) {
@@ -41,23 +69,21 @@ const EarthFootage = ({ date, lat, lon }: EarthFootageProps) => {
     const { url } = data;
 
     return (
-      <Box
-        component="img"
-        sx={{
-          [theme.breakpoints.down('sm')]: {
-            width: 300,
-          },
-          [theme.breakpoints.between('sm', 'md')]: {
-            width: 400,
-          },
-          [theme.breakpoints.up('md')]: {
-            width: 800,
-          },
-          borderRadius: 2,
-        }}
-        src={url}
-        alt="Google Earth footage"
-      />
+      <>
+        <Box>
+          {!imageLoaded && (
+            <Skeleton variant="rounded" sx={imgStyle} height={400} />
+          )}
+          <Box
+            component="img"
+            sx={imgStyle}
+            src={url}
+            height={!imageLoaded ? 0 : 'auto'}
+            alt="Google Earth footage"
+            onLoad={handleImageLoad}
+          />
+        </Box>
+      </>
     );
   }
 
