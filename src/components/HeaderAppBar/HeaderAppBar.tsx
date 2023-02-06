@@ -10,10 +10,12 @@ import {
   IconButton,
   Toolbar,
   Typography,
+  Link as StyledLink,
 } from '@mui/material';
 
 // Misc
 import { linkList } from 'components/constants';
+import { routes } from 'utils';
 
 // Icons
 import MenuIcon from '@mui/icons-material/Menu';
@@ -43,10 +45,16 @@ const HeaderAppBar = ({ handleDrawerToggle }: HeaderAppBarProps) => {
             gap={1}
             alignItems="center"
             display="flex"
-            component="div"
             sx={{ flexGrow: 1 }}
           >
-            <RocketLaunchIcon /> Discover Space
+            <StyledLink
+              component={Link}
+              to={routes.home}
+              color="inherit"
+              underline="none"
+            >
+              <RocketLaunchIcon /> Discover Space
+            </StyledLink>
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {linkList.map(({ to, text }) => (
