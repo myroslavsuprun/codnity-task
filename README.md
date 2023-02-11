@@ -13,3 +13,11 @@ The project is based on NASA API which provides endpoints for receiving Eearth s
 - choose specific date(sol) on Mars when the image was taken.
 #### Home page: 
 - links to the pages indicated above.
+----
+### Dependencies: 
+- React.js - UI rendering;
+- Material UI - UI components styling;
+- Redux Toolkit Query - fetching data from the API;
+- TypeScript - strict typing;
+- React Router - browser navigation in React;
+- and many more miscellaneous ones.
