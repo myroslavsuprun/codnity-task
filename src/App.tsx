@@ -23,7 +23,6 @@ const Mars = lazy(() => import('pages/Mars/Mars'));
 const Earth = lazy(() => import('pages/Earth/Earth'));
 
 // **** Component **** //
-console.log(Home);
 
 function App() {
   return (
